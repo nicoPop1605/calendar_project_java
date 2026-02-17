@@ -1,0 +1,88 @@
+.calendarContainer {
+    display: flex;
+    border: 1px solid #ccc;
+    height: 800px;
+    font-family: Arial, sans-serif;
+}
+
+.hoursColumn {
+    width: 50px;
+    border-right: 1px solid #ccc;
+    position: relative;
+    background-color: #f7f7f7;
+}
+
+.dayColumn {
+    flex: 1;
+    border-left: 1px solid #ccc;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    background-color: #fff;
+}
+
+.dayHeader {
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    z-index: 2;
+}
+
+.hourLine {
+    height: 60px;
+    border-bottom: 1px solid #eee;
+    font-size: 10px;
+    text-align: right;
+    padding-right: 2px;
+}
+
+.eventBlock {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    border-radius: 6px;
+    padding: 4px 2px;
+    font-size: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+}
+
+.eventBlock:hover {
+    transform: scale(1.02);
+}
+
+.eventNormal {
+    background-color: #add8e6;
+    border: 1px solid #333;
+}
+
+.eventOverlap {
+    background-color: #ffcccc;
+    border: 1px solid #b00000;
+}
+
+.time {
+    font-size: 10px;
+    color: #333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+.buttons button {
+    font-size: 10px;
+    padding: 1px 3px;
+    cursor: pointer;
+}
