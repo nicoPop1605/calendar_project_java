@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddEventForm.module.css";
 
-function AddEventForm({ onAdd, editingEvent }) {
+function AddEventForm({ onAdd, editingEvent, groups }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [startDateTime, setStartDateTime] = useState("");
     const [endDateTime, setEndDateTime] = useState("");
     const [location, setLocation] = useState("");
+    const [selectedGroupId, setSelectedGroupId] = useState("");
 
     useEffect(() => {
         if (editingEvent) {
@@ -15,12 +16,14 @@ function AddEventForm({ onAdd, editingEvent }) {
             setStartDateTime(editingEvent.startDateTime);
             setEndDateTime(editingEvent.endDateTime);
             setLocation(editingEvent.location)
+            setSelectedGroupId(editingEvent.group?.id || "");
         } else {
             setTitle("");
             setDescription("");
             setStartDateTime("");
             setEndDateTime("");
             setLocation("");
+            setSelectedGroupId("");
         }
     }, [editingEvent]);
 
@@ -33,7 +36,8 @@ function AddEventForm({ onAdd, editingEvent }) {
             description,
             startDateTime,
             endDateTime,
-            location
+            location,
+            group: selectedGroupId ? { id: Number(selectedGroupId) } : null
         });
 
         if (!editingEvent) {
@@ -42,6 +46,7 @@ function AddEventForm({ onAdd, editingEvent }) {
             setStartDateTime("");
             setEndDateTime("");
             setLocation("");
+
         }
     };
 
@@ -85,6 +90,17 @@ function AddEventForm({ onAdd, editingEvent }) {
                 required
                 className={styles.input}
             />
+
+            <select
+                className={styles.input}
+                value={selectedGroupId}
+                onChange={(e) => setSelectedGroupId(e.target.value)}
+            >
+                <option value="">Eveniment Personal (Niciun grup)</option>
+                {groups.map(g => (
+                    <option key={g.id} value={g.id}>{g.name}</option>
+                ))}
+            </select>
             <button type="submit" className={styles.button}>
                 {editingEvent ? "Update Event" : "Add Event"}
             </button>

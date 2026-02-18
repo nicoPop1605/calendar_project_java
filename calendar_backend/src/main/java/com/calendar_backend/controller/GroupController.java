@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/groups")
-@CrossOrigin(origins = "http://localhost:3000") // Permite accesul din React
+@CrossOrigin(origins = "http://localhost:3000")
 public class GroupController {
 
     private final GroupRepository groupRepository;
@@ -67,4 +67,6 @@ public class GroupController {
         groupRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }
