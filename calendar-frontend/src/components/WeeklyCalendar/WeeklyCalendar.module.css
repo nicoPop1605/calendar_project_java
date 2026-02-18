@@ -86,3 +86,22 @@
     padding: 1px 3px;
     cursor: pointer;
 }
+.eventCard {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3; /* Linie de accent */
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 5px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.eventCard:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.groupEvent {
+    background: #e8f5e9;
+    border-left: 4px solid #4caf50;
+}
